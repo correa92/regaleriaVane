@@ -2,7 +2,7 @@
 const ItemListContainer = ()=>{
     return (
         <div className="contenedor-itemList">
-            <p>lista</p>
+            <p>Bienvenido</p>
         </div>
     )
 }
