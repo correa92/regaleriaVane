@@ -1,17 +1,49 @@
+import * as React from 'react';
+
+// importaciones desde bootstrap
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CarWidget from "./CardWidget";
 import "./NavBar.css";
-import img from "../img/logoRV.png";
+import Img from "../img/logoRV.png";
+
+// importaciones desde MATERIAL UI
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
+
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
+
+function CarWidget() {
+  return (
+   <div className='cw'>
+    <IconButton aria-label="cart" href='#carrito'>
+      <StyledBadge badgeContent={4} color={'primary'}>
+        <ShoppingCartIcon />
+      </StyledBadge>
+    </IconButton>
+   </div>
+  );
+}
+
 
 const Logo = () => {
   return (
       <img
         alt="REGALERÍA VANE"
-        src={img}
+        src={Img}
         width="30"
         height="30"
         className="d-inline-block align-top"
@@ -34,11 +66,11 @@ function NavBar() {
           <Nav className="me-auto">
 
             <NavDropdown title="Categoría" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Decoración</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Indumentaria</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Combos</NavDropdown.Item>
+              <NavDropdown.Item href="#decoracion">Decoración</NavDropdown.Item>
+              <NavDropdown.Item href="#indumentaria">Indumentaria</NavDropdown.Item>
+              <NavDropdown.Item href="#combos">Combos</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Otros...</NavDropdown.Item>
+              <NavDropdown.Item href="#otros">Otros...</NavDropdown.Item>
             </NavDropdown>
 
             <Nav.Link href="#ofertas">Ofertas</Nav.Link>
