@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 // importaciones desde bootstrap
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -7,36 +5,9 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
-import Img from "../img/logoRV.png";
+import Img from "../../img/logoRV.png";
+import CarWidget from "../CarWidget/CarWidget";
 
-// importaciones desde MATERIAL UI
-import Badge from '@mui/material/Badge';
-import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
-
-
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  '& .MuiBadge-badge': {
-    right: -3,
-    top: 13,
-    border: `2px solid ${theme.palette.background.paper}`,
-    padding: '0 4px',
-  },
-}));
-
-function CarWidget() {
-  return (
-   <div className='cw'>
-    <IconButton aria-label="cart" href='#carrito'>
-      <StyledBadge badgeContent={4} color={'primary'}>
-        <ShoppingCartIcon />
-      </StyledBadge>
-    </IconButton>
-   </div>
-  );
-}
 
 
 const Logo = () => {
