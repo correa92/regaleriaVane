@@ -1,0 +1,7 @@
+.itemList{
+    background-color: #DDD;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}

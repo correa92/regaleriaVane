@@ -1,9 +1,17 @@
-.contenedor{
-    display: flex;
-    align-items: center;
-    margin: 0 50px 0 50px;
-}
-
 .cw{
     margin: 0 20px 0 0;
+}
+
+
+
+.active{
+    background-color: #707070;
+    color: aliceblue;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+a{
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
 }
