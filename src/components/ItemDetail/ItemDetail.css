@@ -8,8 +8,16 @@
 .container_info{  
     padding: .5rem;
 }
+.container_title_offer--Detail{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.container_title_offer--Detail h3{
+    font-size: 2.5rem;
+}
 .cuotas{
-    background: rgb(246, 57, 57);
+    background: yellowgreen;
     padding: 3px;
     border-radius: 5px;
     text-align: center;

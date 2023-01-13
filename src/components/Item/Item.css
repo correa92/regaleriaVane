@@ -1,5 +1,19 @@
 .precio_lista{
-    background: rgb(246, 57, 57);
+    background: yellowgreen;
     padding: 3px;
     border-radius: 5px;
+}
+
+.container_title_offer{
+    
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 3px;
+}
+.container_title_offer h3{
+    font-size: 25px;
+    font-weight: 600;
+    margin: 0;
 }

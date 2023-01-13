@@ -13,12 +13,12 @@ const ItemListContainer = ()=>{
 
         const getProducts = () =>{
             return new Promise((resolve,reject)=>{
-                const productosFiltrados = datos.filter((prod)=> prod.category === categoryName);
+                const productosFiltrados = datos.filter((prod)=> prod.category === categoryName || (categoryName === "offer" & prod.offer === "true" ));
 
                 const prodListados = categoryName ? productosFiltrados : datos;
                 setTimeout(()=>{
                     resolve(prodListados);
-                },2000);
+                },1000);
 
             });
 

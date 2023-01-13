@@ -1,5 +1,13 @@
-.cw{
-    margin: 0 20px 0 0;
+
+.container_navBar{
+    background-color: yellowgreen;
+}
+.container_mjsOffer{
+    padding: 4px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .container-links{
@@ -12,8 +20,7 @@
 }
 .container-nav{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
 }
 .container-nav a{
     padding-left: .5rem;
@@ -30,4 +37,12 @@
 a{
     text-decoration: none;
     transition: all 0.2s ease-in-out;
+}
+
+@media (min-width: 720px) {
+    .container-nav {
+        flex-direction: row;
+        align-items: center;
+
+    }
 }

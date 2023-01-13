@@ -1,7 +1,7 @@
 // importaciones desde MATERIAL UI
+import "./CarWidget.css";
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
@@ -19,11 +19,9 @@ export default function CarWidget() {
 
   return (
    <div className='cw'>
-    <IconButton aria-label="cart" href='#carrito'>
       <StyledBadge badgeContent={4} color='secondary'>
         <ShoppingCartIcon />
       </StyledBadge>
-    </IconButton>
    </div>
   );
 }
