@@ -1,0 +1,26 @@
+.itemDetail{
+    display: grid;
+    
+}
+.imgContainer img{
+    width: 100%;
+}
+.container_info{  
+    padding: .5rem;
+}
+.cuotas{
+    background: rgb(246, 57, 57);
+    padding: 3px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+@media (min-width: 720px) {
+    .itemDetail{
+        grid-template-columns: 1fr 1fr;
+        max-width: 1200px;
+    }
+    .imgContainer {
+        max-width: 600px;
+    }
+}

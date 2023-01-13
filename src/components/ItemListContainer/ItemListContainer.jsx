@@ -9,7 +9,6 @@ const ItemListContainer = ()=>{
     const [items, setItems] = useState([]);
    
     const {categoryName} = useParams();
-  
     useEffect(()=>{
 
         const getProducts = () =>{
@@ -19,7 +18,7 @@ const ItemListContainer = ()=>{
                 const prodListados = categoryName ? productosFiltrados : datos;
                 setTimeout(()=>{
                     resolve(prodListados);
-                },500);
+                },2000);
 
             });
 

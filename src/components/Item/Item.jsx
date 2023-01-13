@@ -1,3 +1,4 @@
+import "./Item.css";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,7 +10,12 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-export default function Item(props) {
+export default function Props(props) {
+
+  const porcentajeDescuento = 20;
+  const descuento = props.price - (props.price * porcentajeDescuento) / 100;
+  const cuotas =(props.price /12);
+
   return (
     <Card
       sx={{
@@ -27,6 +33,20 @@ export default function Item(props) {
         alt={props.name}
       />
       <CardHeader title={props.name}/>
+
+      <CardActions>
+      <Typography
+          variant="h6"
+          component="div"
+          sx={{
+            borderRadius: "1px",
+            textAlign: "right",
+            fontWeight: 700
+          }}
+        >
+         Precio de lista: <span className="precio_lista">$ <strike>{props.price}</strike></span> 
+        </Typography>
+      </CardActions>
 
       <CardActions sx={{ justifyContent: "space-evenly" }}>
         <IconButton aria-label="add to favorites" >
@@ -50,9 +70,11 @@ export default function Item(props) {
             fontWeight: 700,
           }}
         >
-          $ {props.price}
+          $ {descuento}
         </Typography>
+        
       </CardActions>
+      
     </Card>
   );
 }

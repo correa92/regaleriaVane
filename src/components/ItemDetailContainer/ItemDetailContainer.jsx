@@ -14,13 +14,12 @@ const ItemDetailContainer = ()=>{
         const getProducts = () =>{
             return new Promise((resolve,reject)=>{
                 const productosFiltrados = datos.find((prod)=> prod.id === parseInt(idProduct));
-                const prodEncontrado = idProduct ? productosFiltrados : datos;
+                
+                const prodEncontrado = idProduct ? productosFiltrados : undefined;
                 setTimeout(()=>{
                     resolve(prodEncontrado);
-                },500);
-
+                },2000);
             });
-
         };
 
         getProducts().then((resolve)=>{
@@ -32,7 +31,6 @@ const ItemDetailContainer = ()=>{
 
     },[idProduct]);
 
-    console.log(item);
     return (
         <div>
             <ItemDetail item={item} />

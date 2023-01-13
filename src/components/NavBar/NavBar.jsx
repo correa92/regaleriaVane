@@ -35,45 +35,29 @@ function NavBar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Categoría" id="basic-nav-dropdown">
-              <Nav.Link>
+              <div className="container-links">
+                <Link to="category/offer">Ofertas</Link>
                 <Link to="category/banio">Baño</Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link to="category/cocina">Cocina</Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link to="category/decoracion">Decoración</Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link to="category/juguetes">Juguetes</Link>
-              </Nav.Link>
-              <Nav.Link>
                 <Link to="category/libreria">Librería </Link>
-              </Nav.Link>
-
-              <NavDropdown.Divider />
-
-              <Nav.Link>
                 <Link to="category/otros">Otros...</Link>
-              </Nav.Link>
-            </NavDropdown>
+              </div>
 
-            <Nav.Link>
-              <NavLink to="category/offer">Ofertas</NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="category/nosotros">Nosotros</NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="category/contacto">Contacto</NavLink>
-            </Nav.Link>
+            </NavDropdown>
+            <div className="container-nav">
+              <NavLink to="/nosotros">Nosotros</NavLink>
+              <NavLink to="/contacto">Contacto</NavLink>
+            </div>
+      
           </Nav>
         </Navbar.Collapse>
       </Container>
 
-      <Link to="cart">
+      {/* <Link to="/cart">
         <CarWidget />
-      </Link>
+      </Link> */}
     </Navbar>
   );
 }

@@ -11,12 +11,14 @@ function App() {
       <div className="App">
         <header className="App-header">
           <NavBar />
+          
           <Routes>
             <Route path="/" element={<ItemListContainer />}/>
             <Route path="/category/:categoryName" element={<ItemListContainer />} />
             <Route path="/detail/:idProduct" element={<ItemDetailContainer/>}/>
             <Route path="/cart" element={<Cart/>}/>
           </Routes>
+
           <Footer />
 
         </header>

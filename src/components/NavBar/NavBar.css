@@ -2,7 +2,23 @@
     margin: 0 20px 0 0;
 }
 
-
+.container-links{
+    display: flex;
+    flex-direction: column;
+    vertical-align: center;
+}
+.container-links a{
+    padding: .3rem;
+}
+.container-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container-nav a{
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
 
 .active{
     background-color: #707070;
