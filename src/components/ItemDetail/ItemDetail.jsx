@@ -5,6 +5,7 @@ import PaidIcon from "@mui/icons-material/Paid";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import Skeleton from '@mui/material/Skeleton';
 
 export default function ItemDetail({ item }) {
   let porcentajeDescuento = 0;
@@ -33,7 +34,7 @@ export default function ItemDetail({ item }) {
 
       <div className="container_info">
         <div className="container_title_offer--Detail">
-          <h3>{item.name}</h3>
+          <h3>{item.name ? item.name : <Skeleton variant="rectangular" width={150} height={40} />}</h3>
           {item.offer === "true" ? (
             <LocalOfferIcon color="success" />
           ) : undefined}
@@ -49,7 +50,7 @@ export default function ItemDetail({ item }) {
             padding: 1,
           }}
         >
-          Precio: $ {descuento} &#128523;
+          Precio: $ {descuento ? descuento : <Skeleton variant="rectangular" width={50} height={20} />} &#128523;
         </Typography>
 
         <Typography
@@ -77,7 +78,7 @@ export default function ItemDetail({ item }) {
           aspernatur ullam rem quam ipsum amet a possimus in iusto similique
           iste eius!
         </p>
-        <h5>STOCK: {item.stock > 0 ? "SI" : "NO"}</h5>
+        <h5>{item.stock > 0 ? "En stock" : "Sin stock"}</h5>
 
         <CardActions
           className="container_button"

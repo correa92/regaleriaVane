@@ -18,7 +18,7 @@ const ItemDetailContainer = ()=>{
                 const prodEncontrado = idProduct ? productosFiltrados : undefined;
                 setTimeout(()=>{
                     resolve(prodEncontrado);
-                },2000);
+                },1000);
             });
         };
 

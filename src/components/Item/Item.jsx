@@ -73,7 +73,7 @@ export default function Item(props) {
       </div>
 
       <CardActions sx={{ justifyContent: "space-evenly" }}>
-        <Link to={`/detail/${props.id}`}>
+        <Link to={`/item/${props.id}`}>
           <Button variant="contained" >
             Ver producto
           </Button>

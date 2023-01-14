@@ -1,7 +1,15 @@
 
 .container_navBar{
     background-color: yellowgreen;
+    font-size: 25px;
+    
 }
+.dropdown-menu{
+    background-color: #ddd;
+    font-size: 20px;
+    text-align: center;
+}
+
 .container_mjsOffer{
     padding: 4px;
     text-align: center;
@@ -17,10 +25,12 @@
 }
 .container-links a{
     padding: .3rem;
+
+    
 }
 .container-nav{
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
 }
 .container-nav a{
     padding-left: .5rem;
@@ -43,6 +53,5 @@ a{
     .container-nav {
         flex-direction: row;
         align-items: center;
-
     }
 }

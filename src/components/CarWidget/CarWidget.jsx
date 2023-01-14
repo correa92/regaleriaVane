@@ -19,7 +19,7 @@ export default function CarWidget() {
 
   return (
    <div className='cw'>
-      <StyledBadge badgeContent={4} color='secondary'>
+      <StyledBadge badgeContent={4} color='primary'>
         <ShoppingCartIcon />
       </StyledBadge>
    </div>
