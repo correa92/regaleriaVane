@@ -41,7 +41,7 @@ const ItemListContainer = () => {
     <div className="itemListContainer">
       {loading ? (
         <MoonLoader
-          color="#000"
+          color="#9acd32"
           loading={loading}
           cssOverride={{
             display: "block",

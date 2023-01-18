@@ -15,7 +15,7 @@ const footer = () => {
       </div>
       <div className="design">
         <a href={link}>
-          <i className="fa-solid fa-code fa-fade"></i>Design By Correa Alejandro
+         Designed & Developed By Correa Alejandro
         </a>
       </div>
     </div>

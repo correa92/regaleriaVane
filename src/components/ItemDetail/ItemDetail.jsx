@@ -16,7 +16,7 @@ export default function ItemDetail({ item }) {
   }
 
   const descuento = item.price - (item.price * porcentajeDescuento) / 100;
-  const cuotas = descuento / 3;
+  const cuotas = (descuento / 3).toFixed(2);
 
   return (
     <div className="itemDetail">
@@ -74,10 +74,10 @@ export default function ItemDetail({ item }) {
         {/* por el momento utilizo cualquier elemento para simular que esta cargando la descripcion */}
         <p>
           {" "}
-          `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
           voluptatibus tenetur itaque quod, eos eligendi voluptatum nostrum,
           aspernatur ullam rem quam ipsum amet a possimus in iusto similique
-          iste eius!`
+          iste eius.
         </p>
         <h5>{item.stock > 0 ? "En stock" : "Sin stock"}</h5>
 

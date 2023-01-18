@@ -39,6 +39,7 @@ const ItemDetailContainer = () => {
     <div>
       {loading ? (
         <MoonLoader
+          color="#9acd32"
           loading={loading}
           cssOverride={{ display: "block", margin: "10% auto" }}
         />
