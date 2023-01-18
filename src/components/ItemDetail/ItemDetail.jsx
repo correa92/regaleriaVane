@@ -5,15 +5,14 @@ import PaidIcon from "@mui/icons-material/Paid";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import Skeleton from '@mui/material/Skeleton';
 
 export default function ItemDetail({ item }) {
   let porcentajeDescuento = 0;
 
   if (item.offer === "true") {
     porcentajeDescuento = 40;
-  }else{
-     porcentajeDescuento = 20;
+  } else {
+    porcentajeDescuento = 20;
   }
 
   const descuento = item.price - (item.price * porcentajeDescuento) / 100;
@@ -34,7 +33,7 @@ export default function ItemDetail({ item }) {
 
       <div className="container_info">
         <div className="container_title_offer--Detail">
-          <h3>{item.name ? item.name : <Skeleton variant="rectangular" width={150} height={40} />}</h3>
+          <h3>{item.name}</h3>
           {item.offer === "true" ? (
             <LocalOfferIcon color="success" />
           ) : undefined}
@@ -50,7 +49,7 @@ export default function ItemDetail({ item }) {
             padding: 1,
           }}
         >
-          Precio: $ {descuento ? descuento : <Skeleton variant="rectangular" width={50} height={20} />} &#128523;
+          Precio: $ {descuento} &#128523;
         </Typography>
 
         <Typography
@@ -72,11 +71,13 @@ export default function ItemDetail({ item }) {
         </p>
 
         <h5>Descripción:</h5>
+        {/* por el momento utilizo cualquier elemento para simular que esta cargando la descripcion */}
         <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
+          {" "}
+          `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
           voluptatibus tenetur itaque quod, eos eligendi voluptatum nostrum,
           aspernatur ullam rem quam ipsum amet a possimus in iusto similique
-          iste eius!
+          iste eius!`
         </p>
         <h5>{item.stock > 0 ? "En stock" : "Sin stock"}</h5>
 
@@ -87,10 +88,19 @@ export default function ItemDetail({ item }) {
           <Button
             variant="contained"
             startIcon={<AddShoppingCartIcon aria-label="addCar" />}
+            onClick={() => {
+              console.log("agregando");
+            }}
           >
             Agregar
           </Button>
-          <Button variant="contained" startIcon={<PaidIcon />}>
+          <Button
+            variant="contained"
+            startIcon={<PaidIcon />}
+            onClick={() => {
+              console.log("comprando");
+            }}
+          >
             Comprar
           </Button>
         </CardActions>

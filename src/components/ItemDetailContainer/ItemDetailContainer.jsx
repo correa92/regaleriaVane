@@ -2,40 +2,51 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { datos } from "../../productos";
+import { MoonLoader } from "react-spinners";
 
-const ItemDetailContainer = ()=>{
+const ItemDetailContainer = () => {
+  const [item, setItem] = useState({});
+  const { idProduct } = useParams();
 
-    const [item, setItem] = useState({});
+  // Spinner
+  const [loading, setLoading] = useState(true);
 
-    const {idProduct} =useParams();
+  useEffect(() => {
+    const getProducts = () => {
+      return new Promise((resolve, reject) => {
+        const productosFiltrados = datos.find(
+          (prod) => prod.id === parseInt(idProduct)
+        );
 
-    useEffect(()=>{
+        const prodEncontrado = idProduct ? productosFiltrados : undefined;
+        setTimeout(() => {
+          setLoading(false);
+          resolve(prodEncontrado);
+        }, 2000);
+      });
+    };
 
-        const getProducts = () =>{
-            return new Promise((resolve,reject)=>{
-                const productosFiltrados = datos.find((prod)=> prod.id === parseInt(idProduct));
-                
-                const prodEncontrado = idProduct ? productosFiltrados : undefined;
-                setTimeout(()=>{
-                    resolve(prodEncontrado);
-                },1000);
-            });
-        };
+    getProducts()
+      .then((resolve) => {
+        setItem(resolve);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [idProduct]);
 
-        getProducts().then((resolve)=>{
-            setItem(resolve)
-        })
-        .catch((error)=>{
-            console.log(error);
-        });
-
-    },[idProduct]);
-
-    return (
-        <div>
-            <ItemDetail item={item} />
-        </div>
-    )
-}
+  return (
+    <div>
+      {loading ? (
+        <MoonLoader
+          loading={loading}
+          cssOverride={{ display: "block", margin: "10% auto" }}
+        />
+      ) : (
+        <ItemDetail item={item} />
+      )}
+    </div>
+  );
+};
 
 export default ItemDetailContainer;

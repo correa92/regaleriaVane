@@ -7,14 +7,13 @@ import { Link } from "react-router-dom";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import Button from "@mui/material/Button";
 
-
 export default function Item(props) {
   let porcentajeDescuento = 0;
 
   if (props.offer === "true") {
     porcentajeDescuento = 40;
-  }else{
-     porcentajeDescuento = 20;
+  } else {
+    porcentajeDescuento = 20;
   }
 
   const descuento = props.price - (props.price * porcentajeDescuento) / 100;
@@ -54,7 +53,7 @@ export default function Item(props) {
         >
           $ {descuento}
         </Typography>
-        
+
         <Typography
           variant="h6"
           component="div"
@@ -64,19 +63,14 @@ export default function Item(props) {
             fontWeight: 700,
           }}
         >
-          $ <strike>{props.price}</strike> {" "}
-          <span className="precio_lista">
-            {porcentajeDescuento}% OFF
-          </span>
-
+          $ <strike>{props.price}</strike>{" "}
+          <span className="precio_lista">{porcentajeDescuento}% OFF</span>
         </Typography>
       </div>
 
       <CardActions sx={{ justifyContent: "space-evenly" }}>
         <Link to={`/item/${props.id}`}>
-          <Button variant="contained" >
-            Ver producto
-          </Button>
+          <Button variant="contained">Ver producto</Button>
         </Link>
       </CardActions>
     </Card>
