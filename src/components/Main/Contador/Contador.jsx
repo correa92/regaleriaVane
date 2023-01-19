@@ -20,10 +20,6 @@ export default function Contador({ stock, fn }) {
     }
   }
 
-  // const aumenta = (cant) => {
-  //   fn(cantidad);
-  // };
-
   return (
     <CardActions>
       <Button variant="contained" onClick={resta}>

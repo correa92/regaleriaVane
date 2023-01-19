@@ -3,6 +3,9 @@ import "./CarWidget.css";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { contexto } from "../../Context/CartContext";
+import { useContext } from "react";
+
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -14,9 +17,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function CarWidget() {
+
+  const {cantidad} = useContext(contexto);
+  
   return (
     <div className="cw">
-      <StyledBadge badgeContent={4} color="primary">
+      <StyledBadge badgeContent={cantidad} color="primary">
         <ShoppingCartIcon />
       </StyledBadge>
     </div>

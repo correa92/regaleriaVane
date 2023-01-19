@@ -4,11 +4,11 @@ import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/Main/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Main/Cart/Cart";
-import CustomProvider from "./components/Context/CustomProvider";
+import CarritoProvider from "./components/Context/CartContext";
 
 function App() {
   return (
-    <CustomProvider>
+    <CarritoProvider>
       <BrowserRouter>
         <div className="App">
           <header className="App-header">
@@ -34,7 +34,7 @@ function App() {
           </footer>
         </div>
       </BrowserRouter>
-    </CustomProvider>
+    </CarritoProvider>
   );
 }
 

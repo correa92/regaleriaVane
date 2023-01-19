@@ -5,13 +5,14 @@ import PaidIcon from "@mui/icons-material/Paid";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-import Contador from "../Contador/Contador"
-;
+import Contador from "../Contador/Contador";
+import { Link } from "react-router-dom";
+
+
+
 export default function ItemDetail({ item }) {
-
-   
   let porcentajeDescuento = 0;
-
+ 
   if (item.offer === "true") {
     porcentajeDescuento = 40;
   } else {
@@ -22,10 +23,9 @@ export default function ItemDetail({ item }) {
   const descuento = item.price - (item.price * porcentajeDescuento) / 100;
   const cuotas = (descuento / 3).toFixed(2);
 
-  const onAdd = (cantidad)=>{
+  const onAdd = (cantidad) => {
     console.log(cantidad);
   };
-
 
   return (
     <div className="itemDetail">
@@ -88,23 +88,18 @@ export default function ItemDetail({ item }) {
           iste eius.
         </p>
         <h5>{item.stock > 0 ? "En stock" : "Sin stock"}</h5>
-        
-        
-        <Contador stock={item.stock} fn={onAdd}/>
+
+        <Contador stock={item.stock} fn={onAdd} />
 
         <CardActions
           className="container_button"
           sx={{ justifyContent: "space-evenly" }}
         >
-
-          <Button
-            variant="contained"
-            startIcon={<PaidIcon />}
-            onClick={() => {
-              console.log("comprando");
-            }}
-          >
-            Comprar
+          <Button variant="contained" startIcon={<PaidIcon />}>
+            <Link to="/cart" style={{ color: "#fff" }}>
+              {" "}
+              Comprar
+            </Link>
           </Button>
         </CardActions>
       </div>
