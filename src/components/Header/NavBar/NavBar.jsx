@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./NavBar.css";
-import Img from "../../img/logos/logoRV.png";
+import Img from "../../../img/logos/logoRV.png";
 import CarWidget from "../CarWidget/CarWidget";
 import { NavLink, Link } from "react-router-dom";
 

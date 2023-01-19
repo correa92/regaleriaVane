@@ -31,7 +31,7 @@ export default function Item(props) {
       <CardMedia
         component="img"
         height={300}
-        src={require(`../../img/${props.category}/${props.img}`)}
+        src={require(`../../../img/${props.category}/${props.img}`)}
         alt={props.name}
       />
       <div className="container_title_offer">

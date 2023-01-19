@@ -1,7 +1,7 @@
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { datos } from "../../productos";
+import { datos } from "../../../productos";
 import { MoonLoader } from "react-spinners";
 
 const ItemDetailContainer = () => {

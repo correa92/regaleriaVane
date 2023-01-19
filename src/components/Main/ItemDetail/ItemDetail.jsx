@@ -5,8 +5,11 @@ import PaidIcon from "@mui/icons-material/Paid";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
-
+import Contador from "../Contador/Contador"
+;
 export default function ItemDetail({ item }) {
+
+   
   let porcentajeDescuento = 0;
 
   if (item.offer === "true") {
@@ -15,8 +18,14 @@ export default function ItemDetail({ item }) {
     porcentajeDescuento = 20;
   }
 
+  // descuentos
   const descuento = item.price - (item.price * porcentajeDescuento) / 100;
   const cuotas = (descuento / 3).toFixed(2);
+
+  const onAdd = (cantidad)=>{
+    console.log(cantidad);
+  };
+
 
   return (
     <div className="itemDetail">
@@ -24,7 +33,7 @@ export default function ItemDetail({ item }) {
         <img
           src={
             item.category
-              ? require(`../../img/${item.category}/${item.img}`)
+              ? require(`../../../img/${item.category}/${item.img}`)
               : undefined
           }
           alt={item.name}
@@ -71,7 +80,6 @@ export default function ItemDetail({ item }) {
         </p>
 
         <h5>Descripción:</h5>
-        {/* por el momento utilizo cualquier elemento para simular que esta cargando la descripcion */}
         <p>
           {" "}
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
@@ -80,20 +88,15 @@ export default function ItemDetail({ item }) {
           iste eius.
         </p>
         <h5>{item.stock > 0 ? "En stock" : "Sin stock"}</h5>
+        
+        
+        <Contador stock={item.stock} fn={onAdd}/>
 
         <CardActions
           className="container_button"
           sx={{ justifyContent: "space-evenly" }}
         >
-          <Button
-            variant="contained"
-            startIcon={<AddShoppingCartIcon aria-label="addCar" />}
-            onClick={() => {
-              console.log("agregando");
-            }}
-          >
-            Agregar
-          </Button>
+
           <Button
             variant="contained"
             startIcon={<PaidIcon />}

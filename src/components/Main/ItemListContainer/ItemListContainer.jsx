@@ -1,4 +1,4 @@
-import { datos } from "../../productos";
+import { datos } from "../../../productos";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
