@@ -18,11 +18,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function CarWidget() {
 
-  const {cantidad} = useContext(contexto);
+  const {cantidadTotal} = useContext(contexto);
   
   return (
     <div className="cw">
-      <StyledBadge badgeContent={cantidad} color="primary">
+      <StyledBadge badgeContent={cantidadTotal} color="primary">
         <ShoppingCartIcon />
       </StyledBadge>
     </div>

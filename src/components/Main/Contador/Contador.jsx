@@ -37,12 +37,11 @@ export default function Contador({ stock, fn }) {
         variant="contained"
         startIcon={<AddShoppingCartIcon aria-label="addCar" />}
         onClick={() => {
-          fn(cantidad)
+          fn(cantidad);
         }}
       >
         Agregar
       </Button>
-      
     </CardActions>
   );
 }

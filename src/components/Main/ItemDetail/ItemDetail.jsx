@@ -1,18 +1,19 @@
 import "./ItemDetail.css";
 import CardActions from "@mui/material/CardActions";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import PaidIcon from "@mui/icons-material/Paid";
 import { Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import Contador from "../Contador/Contador";
 import { Link } from "react-router-dom";
-
-
+import { contexto } from "../../Context/CartContext";
+import { useContext } from "react";
 
 export default function ItemDetail({ item }) {
+  const { addItem } = useContext(contexto);
+
   let porcentajeDescuento = 0;
- 
+
   if (item.offer === "true") {
     porcentajeDescuento = 40;
   } else {
@@ -23,9 +24,9 @@ export default function ItemDetail({ item }) {
   const descuento = item.price - (item.price * porcentajeDescuento) / 100;
   const cuotas = (descuento / 3).toFixed(2);
 
-  const onAdd = (cantidad) => {
-    console.log(cantidad);
-  };
+  function onAdd(cantidadProducto) {
+    addItem(item, descuento, cantidadProducto);
+  }
 
   return (
     <div className="itemDetail">
