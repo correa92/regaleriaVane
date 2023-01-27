@@ -16,6 +16,7 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
 
 export default function Cart() {
   const resultado = useContext(contexto);
@@ -38,7 +39,9 @@ export default function Cart() {
               </TableCell>
 
               <TableCell align="right">Precio</TableCell>
-              <TableCell align="right">Acción</TableCell>
+              {carrito.length === 0 ? undefined : (
+                <TableCell align="right">Acción</TableCell>
+              )}
             </TableRow>
 
             <TableRow>
@@ -46,46 +49,56 @@ export default function Cart() {
               <TableCell align="center">Precio Unitario</TableCell>
               <TableCell align="center">Cantidad</TableCell>
               <TableCell align="right">Subtotal</TableCell>
-              <TableCell align="right">
-                <CardActions sx={{ justifyContent: "right" }}>
-                  <Button
-                    variant="contained"
-                    startIcon={<DeleteOutlineIcon />}
-                    sx={{ background: "#eb2f06" }}
-                    onClick={() => {
-                      clear();
-                    }}
-                  >
-                    Vaciar Carrito
-                  </Button>
-                </CardActions>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody className="tabla_carrito-body">
-            {carrito.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell>{row.name}</TableCell>
-                <TableCell align="center">$ {row.price}</TableCell>
-                <TableCell align="center">{row.cantidad}</TableCell>
-                <TableCell align="right">$ {row.subtotal}</TableCell>
+              {carrito.length === 0 ? undefined : (
                 <TableCell align="right">
                   <CardActions sx={{ justifyContent: "right" }}>
                     <Button
                       variant="contained"
-                      startIcon={<DeleteIcon />}
+                      startIcon={<DeleteOutlineIcon />}
                       sx={{ background: "#eb2f06" }}
                       onClick={() => {
-                        removeItem(row);
+                        clear();
                       }}
                     >
-                      Eliminar
+                      Vaciar Carrito
                     </Button>
                   </CardActions>
                 </TableCell>
+              )}
+            </TableRow>
+          </TableHead>
+
+          <TableBody className="tabla_carrito-body">
+            {carrito.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={5} align="center" sx={{ color: "red" }}>
+                  <h3>EL CARRITO SE ENCUENTRA VACÍO</h3>
+                </TableCell>
               </TableRow>
-            ))}
+            ) : (
+              carrito.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.name}</TableCell>
+                  <TableCell align="center">$ {row.price}</TableCell>
+                  <TableCell align="center">{row.cantidad}</TableCell>
+                  <TableCell align="right">$ {row.subtotal}</TableCell>
+                  <TableCell align="right">
+                    <CardActions sx={{ justifyContent: "right" }}>
+                      <Button
+                        variant="contained"
+                        startIcon={<DeleteIcon />}
+                        sx={{ background: "#eb2f06" }}
+                        onClick={() => {
+                          removeItem(row);
+                        }}
+                      >
+                        Eliminar
+                      </Button>
+                    </CardActions>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
 
             <TableRow className="tabla_resultado">
               <TableCell colSpan={2} />
@@ -98,6 +111,15 @@ export default function Cart() {
               </TableCell>
               <TableCell align="right" colSpan={1}>
                 <CardActions sx={{ justifyContent: "right" }}>
+                  <Button
+                    variant="contained"
+                    startIcon={<ArrowCircleLeftIcon />}
+                    sx={{ background: "yellowgreen" }}
+                  >
+                    <Link to="/" style={{ color: "#fff" }}>
+                      Ir a tienda
+                    </Link>
+                  </Button>
                   {carrito.length === 0 ? undefined : (
                     <Button variant="contained" startIcon={<PaidIcon />}>
                       <Link to="/cart" style={{ color: "#fff" }}>

@@ -1,8 +1,9 @@
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { datos } from "../../../productos";
 import { MoonLoader } from "react-spinners";
+import { getDoc, doc } from "firebase/firestore";
+import { productsCollection } from "../../../firebaseConfig";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
@@ -13,26 +14,21 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     const getProducts = () => {
-      return new Promise((resolve, reject) => {
-        const productosFiltrados = datos.find(
-          (prod) => prod.id === parseInt(idProduct)
-        );
 
-        const prodEncontrado = idProduct ? productosFiltrados : undefined;
-        setTimeout(() => {
-          setLoading(false);
-          resolve(prodEncontrado);
-        }, 2000);
-      });
-    };
+      const referenciaDoc = doc(productsCollection,idProduct);
+      const pedido = getDoc(referenciaDoc);
 
-    getProducts()
-      .then((resolve) => {
-        setItem(resolve);
+      pedido
+      .then((resolve)=>{
+        const producto = resolve.data();
+        setItem({id: resolve.id, ...producto})
+        setLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((er)=> console.error(er))
+
+    };
+    getProducts()
+      
   }, [idProduct]);
 
   return (

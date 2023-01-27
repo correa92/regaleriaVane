@@ -5,6 +5,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 
+
 export default function Contador({ stock, fn }) {
   const [cantidad, setCantidad] = useState(1);
 
@@ -21,27 +22,29 @@ export default function Contador({ stock, fn }) {
   }
 
   return (
-    <CardActions>
-      <Button variant="contained" onClick={resta}>
-        <RemoveIcon aria-label="remove" />{" "}
-      </Button>
-
-      <p style={{ margin: "1rem" }}>{cantidad}</p>
-      {cantidad === stock ? undefined : (
-        <Button variant="contained" sx={{ margin: "0" }} onClick={suma}>
-          <AddIcon />
+    <div >
+      <CardActions>
+        <Button variant="contained" onClick={resta}>
+          <RemoveIcon aria-label="remove" />{" "}
         </Button>
-      )}
 
-      <Button
-        variant="contained"
-        startIcon={<AddShoppingCartIcon aria-label="addCar" />}
-        onClick={() => {
-          fn(cantidad);
-        }}
-      >
-        Agregar
-      </Button>
-    </CardActions>
+        <p style={{ margin: "1rem" }}>{cantidad}</p>
+        {cantidad === stock ? undefined : (
+          <Button variant="contained" sx={{ margin: "0" }} onClick={suma}>
+            <AddIcon />
+          </Button>
+        )}
+        <Button
+          variant="contained"
+          startIcon={<AddShoppingCartIcon aria-label="addCar" />}
+          onClick={() => {
+            fn(cantidad);
+          }}
+        >
+          Agregar
+        </Button>
+      </CardActions>
+      
+    </div>
   );
 }

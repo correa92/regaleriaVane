@@ -1,8 +1,10 @@
-import { datos } from "../../../productos";
+// import { datos } from "../../../productos";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { MoonLoader } from "react-spinners";
+import { productsCollection } from "../../../firebaseConfig";
+import { getDocs,query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -13,28 +15,33 @@ const ItemListContainer = () => {
 
   useEffect(() => {
     const getProducts = () => {
-      return new Promise((resolve, reject) => {
-        const productosFiltrados = datos.filter(
-          (prod) =>
-            prod.category === categoryName ||
-            (categoryName === "offer") & (prod.offer === "true")
-        );
 
-        const prodListados = categoryName ? productosFiltrados : datos;
-        setTimeout(() => {
-          setLoading(false);
-          resolve(prodListados);
-        }, 2000);
-      });
+      let pedido = {};
+
+       if(categoryName === 'offer'){
+        const filtro = query(productsCollection, where('offer','==',true))
+        pedido = getDocs(filtro);
+      }else if (categoryName !== undefined) {
+        const filtro = query(productsCollection, where('category','==',categoryName))
+        pedido = getDocs(filtro);
+      }else{
+        pedido = getDocs(productsCollection);
+      }
+
+      
+      pedido.then((resp)=>{
+        const productos = resp.docs.map((product)=> {
+          const producto = {id: product.id, ...product.data()}
+          return producto
+        })
+        setLoading(false);
+        setItems(productos);
+      })
+      .catch((er)=>console.error(er))
     };
 
     getProducts()
-      .then((resolve) => {
-        setItems(resolve);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      
   }, [categoryName]);
 
   return (
@@ -53,6 +60,7 @@ const ItemListContainer = () => {
       ) : (
         <ItemList items={items} />
       )}
+      
     </div>
   );
 };

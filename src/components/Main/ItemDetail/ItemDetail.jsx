@@ -8,13 +8,15 @@ import Contador from "../Contador/Contador";
 import { Link } from "react-router-dom";
 import { contexto } from "../../Context/CartContext";
 import { useContext } from "react";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import Stack from "@mui/material/Stack";
 
 export default function ItemDetail({ item }) {
   const { addItem } = useContext(contexto);
 
   let porcentajeDescuento = 0;
 
-  if (item.offer === "true") {
+  if (item.offer === true) {
     porcentajeDescuento = 40;
   } else {
     porcentajeDescuento = 20;
@@ -81,28 +83,33 @@ export default function ItemDetail({ item }) {
         </p>
 
         <h5>Descripción:</h5>
-        <p>
-          {" "}
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
-          voluptatibus tenetur itaque quod, eos eligendi voluptatum nostrum,
-          aspernatur ullam rem quam ipsum amet a possimus in iusto similique
-          iste eius.
-        </p>
+        <p>{item.description}</p>
         <h5>{item.stock > 0 ? "En stock" : "Sin stock"}</h5>
 
-        <Contador stock={item.stock} fn={onAdd} />
+        <Stack direction="column">
+          <Contador stock={item.stock} fn={onAdd} />
 
-        <CardActions
-          className="container_button"
-          sx={{ justifyContent: "space-evenly" }}
-        >
-          <Button variant="contained" startIcon={<PaidIcon />}>
-            <Link to="/cart" style={{ color: "#fff" }}>
-              {" "}
-              Comprar
-            </Link>
-          </Button>
-        </CardActions>
+          <CardActions
+            className="container_button"
+            sx={{ justifyContent: "length" }}
+          >
+            <Button
+              variant="contained"
+              startIcon={<ArrowCircleLeftIcon />}
+              sx={{ background: "yellowgreen" }}
+            >
+              <Link to="/" style={{ color: "#fff" }}>
+                Ir a tienda
+              </Link>
+            </Button>
+            <Button variant="contained" startIcon={<PaidIcon />}>
+              <Link to="/cart" style={{ color: "#fff" }}>
+                {" "}
+                Ir al carrito
+              </Link>
+            </Button>
+          </CardActions>
+        </Stack>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 export default function Item(props) {
   let porcentajeDescuento = 0;
 
-  if (props.offer === "true") {
+  if (props.offer === true) {
     porcentajeDescuento = 40;
   } else {
     porcentajeDescuento = 20;
@@ -36,7 +36,7 @@ export default function Item(props) {
       />
       <div className="container_title_offer">
         <h3>{props.name}</h3>
-        {props.offer === "true" ? (
+        {props.offer === true ? (
           <LocalOfferIcon color="success" />
         ) : undefined}
       </div>
