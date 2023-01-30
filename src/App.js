@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/Main/ItemDetailContainer/ItemDetailContainer";
 import Cart from "./components/Main/Cart/Cart";
 import CarritoProvider from "./components/Context/CartContext";
+import WeContainer from "./components/Main/WeContainer/WeContainer";
+import Form from "./components/Form/Form";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
                 element={<ItemDetailContainer />}
               />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/we" element={<WeContainer/>} />
+              <Route path="/validation" element={<Form/>} />
               <Route path="*" element={<h1>404 Not Found =(</h1>} />
             </Routes>
           </header>

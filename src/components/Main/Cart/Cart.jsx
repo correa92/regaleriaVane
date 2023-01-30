@@ -13,15 +13,49 @@ import Paper from "@mui/material/Paper";
 import CardActions from "@mui/material/CardActions";
 import PaidIcon from "@mui/icons-material/Paid";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import { addDoc, serverTimestamp } from "firebase/firestore";
+import { salesCollection } from "../../../firebaseConfig";
+import { v4 } from "uuid";
+import Alert from "../../Alert/Alert";
+import Alert2 from "../../Alert2/Alert2";
+import { Stack } from "@mui/material";
 
 export default function Cart() {
   const resultado = useContext(contexto);
+  const navigate = useNavigate();
+  const { carrito, total, removeItem, user, clear, validationUser } = resultado;
 
-  const { carrito, total, removeItem, clear } = resultado;
+  const handleCompra = () => {
+    const compra = {
+      cliente: {
+        email: user.email,
+        telefono: user.movil,
+      },
+      carrito,
+      total,
+      ticket: v4(),
+      fecha: serverTimestamp(),
+    };
+
+    const pedido = addDoc(salesCollection, compra);
+
+    pedido
+      .then((result) => {
+        Alert("COMPRA REGISTRADA", "success");
+        clear();
+        Alert2(
+          `Su compra se registró con el id: ${result.id} \n Gracias por su compra!`
+        );
+        navigate("/");
+      })
+      .catch((er) => {
+        console.error(er);
+      });
+  };
 
   return (
     <div className="container_carrito">
@@ -57,7 +91,7 @@ export default function Cart() {
                       startIcon={<DeleteOutlineIcon />}
                       sx={{ background: "#eb2f06" }}
                       onClick={() => {
-                        clear();
+                        clear("SE VACIÓ EL CARRITO");
                       }}
                     >
                       Vaciar Carrito
@@ -109,30 +143,40 @@ export default function Cart() {
                 {" "}
                 $ {total}
               </TableCell>
-              <TableCell align="right" colSpan={1}>
-                <CardActions sx={{ justifyContent: "right" }}>
-                  <Button
-                    variant="contained"
-                    startIcon={<ArrowCircleLeftIcon />}
-                    sx={{ background: "yellowgreen" }}
-                  >
-                    <Link to="/" style={{ color: "#fff" }}>
-                      Ir a tienda
-                    </Link>
-                  </Button>
-                  {carrito.length === 0 ? undefined : (
-                    <Button variant="contained" startIcon={<PaidIcon />}>
-                      <Link to="/cart" style={{ color: "#fff" }}>
-                        Comprar
-                      </Link>
-                    </Button>
-                  )}
-                </CardActions>
-              </TableCell>
+              <TableCell align="right" colSpan={1}></TableCell>
             </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
+      <Stack>
+        <CardActions sx={{ justifyContent: "right" }}>
+          <Button
+            variant="contained"
+            startIcon={<ArrowCircleLeftIcon />}
+            sx={{ background: "yellowgreen" }}
+          >
+            <Link to="/" style={{ color: "#fff" }}>
+              Ir a tienda
+            </Link>
+          </Button>
+
+          {validationUser && carrito.length !== 0 ? (
+            <Button
+              variant="contained"
+              startIcon={<PaidIcon />}
+              onClick={handleCompra}
+            >
+              COMPRAR
+            </Button>
+          ) : (
+            <Button variant="contained" startIcon={<PaidIcon />}>
+              <Link to="/validation" style={{ color: "#fff" }}>
+                REGISTRAR Y COMPRAR
+              </Link>
+            </Button>
+          )}
+        </CardActions>
+      </Stack>
     </div>
   );
 }

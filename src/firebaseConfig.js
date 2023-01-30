@@ -19,3 +19,4 @@ const db = getFirestore(app); // Firestore
 
 //obtengo la coleccion especificada de db
 export const productsCollection = collection(db,'productos')  //CollectionReference | query
+export const salesCollection = collection(db,'ventas')

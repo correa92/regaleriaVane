@@ -10,14 +10,25 @@ export default function CarritoProvider({ children }) {
   const [cantidadTotal, setCantidadTotal] = useState(0);
   const [total, setTotal] = useState(0);
 
+  const [validationUser,setValidationUser] = useState(false);
+  const [user, setUser] = useState({});
+
   const valoresContexto = {
     carrito,
     cantidadTotal,
     total,
+    validationUser,
+    user,
     addItem,
     removeItem,
     clear,
+    login
   };
+
+  function login(user) {
+    setUser(user);
+    setValidationUser(true);
+  }
 
   function addItem(producto, descuento, cantidadProducto) {
     let contenido = false;
@@ -56,11 +67,13 @@ export default function CarritoProvider({ children }) {
     Alert("PRODUCTO ELIMINADO DEL CARRITO", "success");
   }
 
-  function clear() {
+  function clear(mensaje) {
+    if (mensaje==='') {
+      Alert(mensaje, "success");
+    }
     setCarrito([]);
     setCantidadTotal(0);
     setTotal(0);
-    Alert("SE VACIÓ EL CARRITO", "success");
   }
 
   return <Provider value={valoresContexto}>{children}</Provider>;

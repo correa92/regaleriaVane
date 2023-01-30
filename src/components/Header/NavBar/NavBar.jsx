@@ -42,8 +42,8 @@ function NavBar() {
                 </div>
               </NavDropdown>
               <div className="container-nav">
-                <NavLink to="/nosotros">Nosotros</NavLink>
-                <NavLink to="/contacto">Contacto</NavLink>
+                <NavLink to="/we">Nosotros</NavLink>
+                <NavLink to="/contact">Contacto</NavLink>
               </div>
             </Nav>
             <Link to="/cart">

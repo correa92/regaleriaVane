@@ -1,0 +1,18 @@
+.container_we{
+    color: #555;
+    margin: 5% auto;
+    padding: 1.5rem;
+    max-width: 1000px;
+    border-radius: 2rem;
+
+}
+.container_we p{
+    text-align: justify;
+}
+
+@media (min-width: 768px) {
+  .container_we{
+    background-color: #eee;
+    height: 100%;
+    }  
+}
