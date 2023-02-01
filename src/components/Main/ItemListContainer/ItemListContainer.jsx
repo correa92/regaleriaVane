@@ -5,6 +5,7 @@ import ItemList from "../ItemList/ItemList";
 import { MoonLoader } from "react-spinners";
 import { productsCollection } from "../../../firebaseConfig";
 import { getDocs,query, where } from "firebase/firestore";
+import Alert from "../../Alert/Alert";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -37,7 +38,7 @@ const ItemListContainer = () => {
         setLoading(false);
         setItems(productos);
       })
-      .catch((er)=>console.error(er))
+      .catch((er)=> Alert(er,'error'))
     };
 
     getProducts()

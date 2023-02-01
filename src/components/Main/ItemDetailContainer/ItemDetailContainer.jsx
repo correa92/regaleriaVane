@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { MoonLoader } from "react-spinners";
 import { getDoc, doc } from "firebase/firestore";
 import { productsCollection } from "../../../firebaseConfig";
+import Alert from "../../Alert/Alert";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
@@ -24,7 +25,7 @@ const ItemDetailContainer = () => {
         setItem({id: resolve.id, ...producto})
         setLoading(false);
       })
-      .catch((er)=> console.error(er))
+      .catch((er)=> Alert(er,'error'))
 
     };
     getProducts()

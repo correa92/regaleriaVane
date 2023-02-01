@@ -22,7 +22,6 @@ export default function ItemDetail({ item }) {
     porcentajeDescuento = 20;
   }
 
-  // descuentos
   const descuento = item.price - (item.price * porcentajeDescuento) / 100;
   const cuotas = (descuento / 3).toFixed(2);
 

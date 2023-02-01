@@ -5,7 +5,6 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 
-
 export default function Contador({ stock, fn }) {
   const [cantidad, setCantidad] = useState(1);
 
@@ -22,7 +21,7 @@ export default function Contador({ stock, fn }) {
   }
 
   return (
-    <div >
+    <div>
       <CardActions>
         <Button variant="contained" onClick={resta}>
           <RemoveIcon aria-label="remove" />{" "}
@@ -44,7 +43,6 @@ export default function Contador({ stock, fn }) {
           Agregar
         </Button>
       </CardActions>
-      
     </div>
   );
 }

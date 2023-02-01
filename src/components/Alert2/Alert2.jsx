@@ -1,4 +1,4 @@
-import Swal from "sweetalert2"
+import Swal from "sweetalert2";
 
 export default function Alert2(mensaje) {
   return (
@@ -6,12 +6,12 @@ export default function Alert2(mensaje) {
       {Swal.fire({
         title: mensaje,
         showClass: {
-          popup: 'animate__animated animate__fadeInDown'
+          popup: "animate__animated animate__fadeInDown",
         },
         hideClass: {
-          popup: 'animate__animated animate__fadeOutUp'
-        }
+          popup: "animate__animated animate__fadeOutUp",
+        },
       })}
     </div>
-  )
+  );
 }

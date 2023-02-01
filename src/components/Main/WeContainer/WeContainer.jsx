@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import './WeContainer.css';
+import "./WeContainer.css";
 
 export default function WeContainer() {
   return (

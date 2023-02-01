@@ -1,6 +1,5 @@
 import Swal from "sweetalert2";
 
-// estados-> "success","error","warning","info","question"
 export default function Alert(mensaje,estado) {
     const Toast = Swal.mixin({
         toast: true,

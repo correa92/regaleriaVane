@@ -11,12 +11,9 @@ const firebaseConfig = {
   appId: "1:43454472445:web:25ff4b5091172945f75e94"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig); //FirebaseApp
 
-//obtengo el Firestore de app 
 const db = getFirestore(app); // Firestore
 
-//obtengo la coleccion especificada de db
 export const productsCollection = collection(db,'productos')  //CollectionReference | query
 export const salesCollection = collection(db,'ventas')

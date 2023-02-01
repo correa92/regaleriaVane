@@ -8,6 +8,8 @@ import "./NavBar.css";
 import Img from "../../../img/logos/logoRV.png";
 import CarWidget from "../CarWidget/CarWidget";
 import { NavLink, Link } from "react-router-dom";
+import UserWidget from "../UserWidget/UserWidget";
+import { Stack } from "@mui/material";
 
 function NavBar() {
   return (
@@ -46,9 +48,16 @@ function NavBar() {
                 <NavLink to="/contact">Contacto</NavLink>
               </div>
             </Nav>
-            <Link to="/cart">
-              <CarWidget />
-            </Link>
+            <Nav>
+              <Stack direction="row">
+                <Link to="validation">
+                  <UserWidget />
+                </Link>
+                <Link to="/cart">
+                  <CarWidget />
+                </Link>
+              </Stack>
+            </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>

@@ -49,6 +49,8 @@ a{
     transition: all 0.2s ease-in-out;
 }
 
+
+
 @media (min-width: 720px) {
     .container-nav {
         flex-direction: row;

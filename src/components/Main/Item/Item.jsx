@@ -36,9 +36,7 @@ export default function Item(props) {
       />
       <div className="container_title_offer">
         <h3>{props.name}</h3>
-        {props.offer === true ? (
-          <LocalOfferIcon color="success" />
-        ) : undefined}
+        {props.offer === true ? <LocalOfferIcon color="success" /> : undefined}
       </div>
 
       <div className="container_prices">

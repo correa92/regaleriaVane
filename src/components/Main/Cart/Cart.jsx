@@ -24,6 +24,24 @@ import Alert from "../../Alert/Alert";
 import Alert2 from "../../Alert2/Alert2";
 import { Stack } from "@mui/material";
 
+const Buttons = ({ login, cart, fn }) => {
+  if (login && cart.length !== 0) {
+    return (
+      <Button variant="contained" startIcon={<PaidIcon />} onClick={fn}>
+        COMPRAR
+      </Button>
+    );
+  } else if (!login && cart.length !== 0) {
+    return (
+      <Button variant="contained" startIcon={<PaidIcon />}>
+        <Link to="/validation" style={{ color: "#fff" }}>
+          REGISTRAR
+        </Link>
+      </Button>
+    );
+  }
+};
+
 export default function Cart() {
   const resultado = useContext(contexto);
   const navigate = useNavigate();
@@ -37,7 +55,7 @@ export default function Cart() {
       },
       carrito,
       total,
-      ticket: v4(),
+      ticket_local: v4(),
       fecha: serverTimestamp(),
     };
 
@@ -46,14 +64,14 @@ export default function Cart() {
     pedido
       .then((result) => {
         Alert("COMPRA REGISTRADA", "success");
-        clear();
         Alert2(
           `Su compra se registró con el id: ${result.id} \n Gracias por su compra!`
         );
+        clear();
         navigate("/");
       })
       .catch((er) => {
-        console.error(er);
+        Alert(er,"error")
       });
   };
 
@@ -160,21 +178,7 @@ export default function Cart() {
             </Link>
           </Button>
 
-          {validationUser && carrito.length !== 0 ? (
-            <Button
-              variant="contained"
-              startIcon={<PaidIcon />}
-              onClick={handleCompra}
-            >
-              COMPRAR
-            </Button>
-          ) : (
-            <Button variant="contained" startIcon={<PaidIcon />}>
-              <Link to="/validation" style={{ color: "#fff" }}>
-                REGISTRAR Y COMPRAR
-              </Link>
-            </Button>
-          )}
+          <Buttons login={validationUser} cart={carrito} fn={handleCompra} />
         </CardActions>
       </Stack>
     </div>

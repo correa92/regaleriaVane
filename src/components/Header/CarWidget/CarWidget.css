@@ -1,6 +1,10 @@
 .cw{
+    height: 100%;
     margin: 0 20px 0 0;
     color: #707070;
     display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    
 }

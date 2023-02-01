@@ -4,9 +4,9 @@ import { Button, Stack } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useContext } from "react";
 import { contexto } from "../Context/CartContext";
-import Alert2 from "../Alert2/Alert2";
-
+import Alert from "../Alert/Alert";
 import { useNavigate } from "react-router-dom";
+
 export default function Form() {
   const resultado = useContext(contexto);
   const { login } = resultado;
@@ -20,7 +20,7 @@ export default function Form() {
       movil: e.target.form[4].value,
     };
     login(user);
-    Alert2("Inicio sesión correctamente");
+    Alert("Inicio sesión correctamente",'success');
     navigate("/cart");
   };
 
@@ -34,16 +34,15 @@ export default function Form() {
         }}
         display="flex"
         justifyContent="center"
-        noValidate
-        autoComplete="off"
+        autoComplete="on"
       >
         <Stack>
           <TextField
             variant="outlined"
             required
-            id="form_nombre"
-            label="Nombre"
-            name="name"
+            id="form_email"
+            label="Email"
+            name="email"
           />
 
           <TextField
