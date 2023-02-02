@@ -1,48 +1,47 @@
-// import { datos } from "../../../productos";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { MoonLoader } from "react-spinners";
 import { productsCollection } from "../../../firebaseConfig";
-import { getDocs,query, where } from "firebase/firestore";
+import { getDocs, query, where } from "firebase/firestore";
 import Alert from "../../Alert/Alert";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { categoryName } = useParams();
 
-  //   Spinner
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getProducts = () => {
-
       let pedido = {};
 
-       if(categoryName === 'offer'){
-        const filtro = query(productsCollection, where('offer','==',true))
+      if (categoryName === "offer") {
+        const filtro = query(productsCollection, where("offer", "==", true));
         pedido = getDocs(filtro);
-      }else if (categoryName !== undefined) {
-        const filtro = query(productsCollection, where('category','==',categoryName))
+      } else if (categoryName !== undefined) {
+        const filtro = query(
+          productsCollection,
+          where("category", "==", categoryName)
+        );
         pedido = getDocs(filtro);
-      }else{
+      } else {
         pedido = getDocs(productsCollection);
       }
 
-      
-      pedido.then((resp)=>{
-        const productos = resp.docs.map((product)=> {
-          const producto = {id: product.id, ...product.data()}
-          return producto
+      pedido
+        .then((resp) => {
+          const productos = resp.docs.map((product) => {
+            const producto = { id: product.id, ...product.data() };
+            return producto;
+          });
+          setLoading(false);
+          setItems(productos);
         })
-        setLoading(false);
-        setItems(productos);
-      })
-      .catch((er)=> Alert(er,'error'))
+        .catch((er) => Alert(er, "error"));
     };
 
-    getProducts()
-      
+    getProducts();
   }, [categoryName]);
 
   return (
@@ -61,7 +60,6 @@ const ItemListContainer = () => {
       ) : (
         <ItemList items={items} />
       )}
-      
     </div>
   );
 };

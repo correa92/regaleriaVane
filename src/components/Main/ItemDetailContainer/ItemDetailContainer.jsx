@@ -5,13 +5,13 @@ import { MoonLoader } from "react-spinners";
 import { getDoc, doc } from "firebase/firestore";
 import { productsCollection } from "../../../firebaseConfig";
 import Alert from "../../Alert/Alert";
+import { useNavigate } from "react-router-dom";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState({});
   const { idProduct } = useParams();
-
-  // Spinner
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProducts = () => {
@@ -22,15 +22,20 @@ const ItemDetailContainer = () => {
       pedido
       .then((resolve)=>{
         const producto = resolve.data();
-        setItem({id: resolve.id, ...producto})
-        setLoading(false);
+        if (producto === undefined) {
+          Alert('PRODUCTO NO ENCONTRADO','error');
+          navigate('/');
+        }else{
+          setItem({id: resolve.id, ...producto})
+          setLoading(false);
+        }
       })
       .catch((er)=> Alert(er,'error'))
 
     };
     getProducts()
       
-  }, [idProduct]);
+  }, [idProduct,navigate]);
 
   return (
     <div>
@@ -41,7 +46,7 @@ const ItemDetailContainer = () => {
           cssOverride={{ display: "block", margin: "10% auto" }}
         />
       ) : (
-        <ItemDetail item={item} />
+         <ItemDetail item={item} />
       )}
     </div>
   );

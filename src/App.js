@@ -27,8 +27,8 @@ function App() {
                 element={<ItemDetailContainer />}
               />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/we" element={<WeContainer/>} />
-              <Route path="/validation" element={<Form/>} />
+              <Route path="/we" element={<WeContainer />} />
+              <Route path="/validation" element={<Form />} />
               <Route path="*" element={<h1>404 Not Found =(</h1>} />
             </Routes>
           </header>

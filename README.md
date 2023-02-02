@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Regalería Vane - Proyecto e-commerce en React js - CODERHOUSE 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Regalería Vane** es un sitio web *e-commerce*, Su objetivo es vender productos varios, por ejemplo: Artículos de librería, cocina, juguetes, etc. Además existen artículos que están en ofertas, los cuales tienen un icono distintivo.
+Se pueden agregar varios productos al carrito con la cantidad de unidades que el cliente especifico.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Dependencias
+Para el proyecto se necesitaron las siguientes dependencias:
+   - "@mui/icons-material": "^5.11.0",
+   - "@mui/material": "^5.11.1",
+   - "bootstrap": "^5.2.3",
+   - "firebase": "^9.16.0",
+   - "luxon": "^3.2.1",
+   - "react": "^18.2.0",
+   - "react-bootstrap": "^2.7.0",
+   - "react-dom": "^18.2.0",
+   - "react-router-dom": "^6.6.2",
+   - "react-scripts": "5.0.1",
+   - "react-spinners": "^0.13.7",
+   - "sweetalert2": "^11.7.0",
+   - "sweetalert2-react-content": "^5.0.7",
+   - "uuid": "^9.0.0"
 
-### `npm start`
+## Instalación
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para acceder al repositorio del proyecto puede hacerlo a través del link [Github](https://github.com/correa92/regaleriaVane.git).
+Otra opción es escribir el siguiente comando en la consola de **GIT**. 
+```bash
+git clone https://github.com/correa92/regaleriaVane.git
+```
+```
+Una vez clonado el repositorio se deben instalar las dependencias del proyecto. En la terminal del editor elegido se debe ejecutar el siguiente comando para windows.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+npm install
+```
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Una vez instalado las dependencias necesarias se inicializa el proyecto en el servidor local. Para ello se debe ejecutar el siguiente comando:
+ ```bash
+npm run start
+```
