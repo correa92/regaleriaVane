@@ -1,9 +1,7 @@
-# Regalería Vane 
-# Proyecto e-commerce en React js 
-## CODERHOUSE 
+# Regalería Vane  Proyecto e-commerce en React js  CODERHOUSE 
 
 **Regalería Vane** es un sitio web *e-commerce*, Su objetivo es vender productos varios, por ejemplo: Artículos de librería, cocina, juguetes, etc. Además existen artículos que están en ofertas, los cuales tienen un icono distintivo.
-Se pueden agregar varios productos al carrito con la cantidad de unidades que el cliente especifico.
+Se pueden agregar varios productos al carrito con la cantidad de unidades que el cliente especifico.    
 ![Image Main](https://github.com/correa92/regaleriaVane/blob/main/main.png)
 
 ## Dependencias
@@ -63,5 +61,5 @@ Listo ya puede comenzar a utilizar el sitio web.
 
 
 ## Developer
-Hola soy Correa Alejandro, desarrollador front-end en React js. 
+Hola soy Correa Alejandro, desarrollador front-end en React js.   
 Pueden encontrar más información de mis trabajos en [Github](https://github.com/correa92)
