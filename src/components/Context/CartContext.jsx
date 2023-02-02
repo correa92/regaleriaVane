@@ -10,7 +10,7 @@ export default function CarritoProvider({ children }) {
   const [cantidadTotal, setCantidadTotal] = useState(0);
   const [total, setTotal] = useState(0);
 
-  const [validationUser,setValidationUser] = useState(false);
+  const [validationUser, setValidationUser] = useState(false);
   const [user, setUser] = useState({});
 
   const valoresContexto = {
@@ -22,7 +22,7 @@ export default function CarritoProvider({ children }) {
     addItem,
     removeItem,
     clear,
-    login
+    login,
   };
 
   function login(user) {
@@ -49,7 +49,6 @@ export default function CarritoProvider({ children }) {
         subtotal: descuento * cantidadProducto,
       };
 
-      // setCarrito(carrito.concat(productoAlCarrito));
       setCarrito([...carrito, productoAlCarrito]);
       setCantidadTotal(cantidadTotal + cantidadProducto);
       setTotal(total + descuento * cantidadProducto);
@@ -68,7 +67,7 @@ export default function CarritoProvider({ children }) {
   }
 
   function clear(mensaje) {
-    if (mensaje==='') {
+    if (mensaje === "") {
       Alert(mensaje, "success");
     }
     setCarrito([]);
