@@ -1,4 +1,4 @@
-# Regalería Vane  Proyecto e-commerce en React js  CODERHOUSE 
+# Regalería Vane -Proyecto e-commerce en React js- CODERHOUSE 
 
 **Regalería Vane** es un sitio web *e-commerce*, Su objetivo es vender productos varios, por ejemplo: Artículos de librería, cocina, juguetes, etc. Además existen artículos que están en ofertas, los cuales tienen un icono distintivo.
 Se pueden agregar varios productos al carrito con la cantidad de unidades que el cliente especifico.    
