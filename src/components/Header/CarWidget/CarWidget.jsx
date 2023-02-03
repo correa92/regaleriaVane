@@ -1,4 +1,4 @@
-// importaciones desde MATERIAL UI
+
 import "./CarWidget.css";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";

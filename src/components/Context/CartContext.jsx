@@ -33,7 +33,6 @@ export default function CarritoProvider({ children }) {
   function addItem(producto, descuento, cantidadProducto) {
     let contenido = false;
 
-    // verifica si el carrito ya tiene el producto antes de agregarlo
     for (let i = 0; i < carrito.length; i++) {
       if (carrito[i].id === producto.id) {
         contenido = true;
